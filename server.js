@@ -46,6 +46,8 @@ app.use(require('webpack-hot-middleware')(compiler));
 
 // setup backend data for servicese
 
+var count = 0
+
 // websocket communication handlers
 io.on('connection', function(socket){
     count ++;
@@ -54,7 +56,12 @@ io.on('connection', function(socket){
         count --;
         console.log(`1 user disconnected, rest ${count}`);
     });
-    
+    socket.on('poll-hints', msg => {
+        io.emit('poll-hints', msg)
+    })
+    socket.on('q-hints', msg => {
+        io.emit('q-hints', msg)
+    })
 });
 
 // normal routes with POST/GET 
@@ -75,13 +82,5 @@ app.get('*', (req, res, next) => {
 // on terminating the process
 process.on('SIGINT', _ => {
     console.log('now you quit!');
-
-    for (const id in posts) {
-        let name = posts[id].fn;
-        delete posts[id].fn;
-        delete posts[id].article;
-        fs.writeFileSync(path.join(postsPath, 'postinfo', name + '.json'), JSON.stringify(posts[id], undefined, 4));
-        console.log(path.join(postsPath, 'postinfo', name + '.json'));
-    }
     process.exit();
 })
