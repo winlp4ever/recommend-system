@@ -3,6 +3,8 @@ import io from 'socket.io-client'
 import TextareaAutosize from '@material-ui/core/TextareaAutosize'
 import { v4 as uuidv4 } from 'uuid';
 
+import './_app.scss'
+
 const socket = io()
 
 function useInterval(callback, delay) {
