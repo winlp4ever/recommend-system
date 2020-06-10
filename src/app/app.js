@@ -33,7 +33,7 @@ const Hints = (props) => {
             onClick={_ => props.applyHint(h.text)}
         >
             <span>{h.text}</span>
-            <span>{h.score}</span>
+            <span className='score'>{h.score}</span>
         </div>)}
     </div>
 }
