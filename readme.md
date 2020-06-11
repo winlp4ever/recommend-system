@@ -14,6 +14,8 @@ cd recommend-system
     1. `sudo apt install nodejs`
     2. `sudo apt install npm`
 
+* Install nodemon with `npm i -g nodemon` (consider using `sudo` if you're unix/linux user)
+
 * Install all necessary python packages `pip install -r nlp/requirements.txt`
 * Install all `npm` packages (for front-end): `npm i`
 * Start your server with: `npm start`
