@@ -28,6 +28,7 @@ function useInterval(callback, delay) {
 }
 
 const Hints = (props) => {
+    if (props.hints.length == 0) return null
     return <div className='hints'>
         {props.hints.map((h, id) => <div 
             key={id}
@@ -60,10 +61,12 @@ const Ask = (props) => {
         return (() => socket.off('q-hints'))
     }, [])
 
-    useInterval(() => socket.emit('poll-hints', {
-        uid: props.uid,
-        q: q
-    }))
+    useInterval(() => {
+        if (q.length > 2) socket.emit('poll-hints', {
+            uid: props.uid,
+            q: q
+        })
+    })
 
     const sendQ = (q) => {
         socket.emit('ask', {
