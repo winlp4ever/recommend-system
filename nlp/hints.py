@@ -1,4 +1,6 @@
 import json
+from sentence_transformers import SentenceTransformer
+from scipy.spatial.distance import cosine
 
 class Hints(object):
     '''
@@ -11,7 +13,7 @@ class Hints(object):
         with open(fn) as json_file:
             self.data = json.load(json_file)
 
-        print (self.data)
+        self.bc = SentenceTransformer('distiluse-base-multilingual-cased')
 
     def similarity(self, q1, q2):
         """
@@ -19,7 +21,9 @@ class Hints(object):
         You are supposed to modify this function.
         The goal is to vectorise the two questions with a nlp method of your choice
         """
-        return 0.95
+        v = self.bc.encode([q1, q2])
+        dist = 1 - cosine(v[0], v[1])
+        return dist
 
     def getHints(self, q: str):
         '''

@@ -54,7 +54,6 @@ const Ask = (props) => {
         socket.on('q-hints', msg => {
             if (msg.uid == props.uid) {
                 setHints(msg.hints)
-                setIsTyping(false)
             }
         })
 
@@ -62,11 +61,14 @@ const Ask = (props) => {
     }, [])
 
     useInterval(() => {
-        if (q.length > 2) socket.emit('poll-hints', {
-            uid: props.uid,
-            q: q
-        })
-    })
+        if (q.length > 2) if (isTyping) {
+            socket.emit('poll-hints', {
+                uid: props.uid,
+                q: q
+            })
+            setIsTyping(false)
+        }
+    }, 100)
 
     const sendQ = (q) => {
         socket.emit('ask', {
@@ -89,7 +91,7 @@ const Ask = (props) => {
     const applyHint = (txt) => {
         setQ(txt)
         text.current.value = txt
-        setIsTyping(true)
+        setIsTyping(false)
     }
 
     const handleChange = (e) => {
