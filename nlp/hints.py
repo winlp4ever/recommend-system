@@ -11,6 +11,11 @@ class Hints(object):
         print (self.data)
 
     def similarity(self, q1, q2):
+        """
+        Compute the similarity between q1 and q2. 
+        You are supposed to modify this function.
+        The goal is to vectorise the two questions with a nlp method of your choice
+        """
         return 0.95
 
     def getHints(self, q: str):
