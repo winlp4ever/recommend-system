@@ -73,7 +73,6 @@ const Ask = (props) => {
             uid: props.uid,
             q: q
         })
-        console.log('hmm')
     }
 
     const handleKeyDown = (e) => {
@@ -118,7 +117,6 @@ const Answer = (props) => {
             if (msg.uid == props.uid) {
                 setAnswer(msg.answer)
             }
-            console.log('yup')
         })
 
         return (() => socket.off('answer'))
