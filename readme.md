@@ -11,8 +11,9 @@ cd recommend-system
 
     * For __Ubuntu__ users, type the following commands:
 
-    1. `sudo apt install nodejs`
-    2. `sudo apt install npm`
+    1. `curl -sL https://deb.nodesource.com/setup_10.x -o nodesource_setup.sh`
+    2. `sudo bash nodesource_setup.sh`
+    3. `sudo apt install nodejs`
 
 * Install nodemon with `npm i -g nodemon` (consider using `sudo` if you're unix/linux user)
 
