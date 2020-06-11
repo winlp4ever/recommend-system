@@ -17,7 +17,7 @@ cd recommend-system
 
 * Install nodemon with `npm i -g nodemon` (consider using `sudo` if you're unix/linux user)
 
-* Install all necessary python packages `pip install -r nlp/requirements.txt`
+* Install all necessary python packages `pip install -r nlp/requirements.txt` (parse `--no-cache-dir` in case you have a limited RAM)
 * Install all `npm` packages (for front-end): `npm i`
 * Start your server with: `npm start`
 * Open another terminal and start the python backend with: `python nlp/hint-server.py`
