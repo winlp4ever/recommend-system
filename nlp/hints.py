@@ -5,6 +5,9 @@ class Hints(object):
     Hint system
     '''
     def __init__(self, fn='nlp/qas.json'):
+        '''
+        Initialize the object by reading question/answers data
+        '''
         with open(fn) as json_file:
             self.data = json.load(json_file)
 
@@ -19,6 +22,12 @@ class Hints(object):
         return 0.95
 
     def getHints(self, q: str):
+        '''
+        Returns the most similar questions in the base to what people are typing.
+        Basically, this function will iterate over the whole dataset to compare
+        the similarity of each question in the base with what people are typing and finally select ones
+        with highest scores to return
+        '''
         hints = []
         for h in self.data:
             hints.append({"text": h["question"], "score": self.similarity(q, h["question"])})
@@ -27,6 +36,13 @@ class Hints(object):
         return hints
 
     def getAnswer(self, q: str):
+        '''
+        Returns the answer to the question q.
+        
+        Basically this function will search for the most similar question to q in the 
+        base, and if the similarity is greater than 90%, will return the answer of 
+        that question
+        '''
         mx = 0
         ans = 'Cannot find an answer for your question'
         for h in self.data:
