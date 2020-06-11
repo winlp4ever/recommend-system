@@ -1,14 +1,14 @@
 body, html, #main {
     margin: 0;
     padding: 0;
-    min-width: 400px;
-    min-height: 600px;
+    width: 100%;
+    height: 100%;
     font: {
         size: 19px;
-        family: 'Baloo Chettan 2', sans-serif;
+        family: 'Nunito', sans-serif;
     }
-    
-    background-color: #fafafa;
+    background: #000a12;
+    color: white;
 }
 
 a {
@@ -16,39 +16,6 @@ a {
     color: #1e88e5;
 }
 
-.display {
-    display: inherit;
-}
-
-.not-display {
-    display: none;
-}
-
-section.view {
-    display: none;
-    &.display {
-        display: inherit;
-    }
-}
-
-@keyframes appear {
-    0% {transform: scale(1.4); opacity: 0}
-    100% {transform: none; opacity: 1}
-}
-
-.appear {
-    animation: appear 0.3s cubic-bezier(0.0, 0.0, 0.2, 1);
-}
-
 textarea {
-    font-family: 'prsans', sans-serif;
-}
-
-@keyframes img-raise {
-    0% {transform: translateY(2em); opacity: 0}
-    100% {transform: translateY(0); opacity: 1}
-}
-
-img {
-    animation: img-raise 0.35s cubic-bezier(0, 0, 0.2, 1);
+    font-family: 'Nunito', sans-serif;
 }

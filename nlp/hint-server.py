@@ -18,6 +18,13 @@ async def run():
             "hints": Hs.getHints(msg['q'])
         })
 
+    @sio.on('ask')
+    async def on_message(msg): 
+        await sio.emit('answer', {
+            "uid": msg["uid"],
+            "answer": Hs.getAnswer(msg['q'])
+        })
+
     @sio.event
     def disconnect():
         print('disconnected from server')

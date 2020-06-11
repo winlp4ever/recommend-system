@@ -62,6 +62,12 @@ io.on('connection', function(socket){
     socket.on('q-hints', msg => {
         io.emit('q-hints', msg)
     })
+    socket.on('ask', msg => {
+        io.emit('ask', msg)
+    })
+    socket.on('answer', msg => {
+        io.emit('answer', msg)
+    })
 });
 
 // normal routes with POST/GET 

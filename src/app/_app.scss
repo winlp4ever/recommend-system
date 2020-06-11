@@ -1,0 +1,57 @@
+.app {
+    width: 60%;
+    margin: 2em auto;
+    height: 100%;
+    
+
+    .ask {
+        position: relative;
+        box-sizing: border-box;
+        padding: 0.25em 1em;
+        border: 1px solid rgb(138, 138, 138);
+        border-radius: 0.5em;
+        background: #263238;
+        textarea {
+            font-size: 1em;
+            width: 100%;
+            resize: none;
+            border: none;
+            box-sizing: border-box;
+            display: block;
+            padding: 0.5em;
+            outline: none;
+            background: transparent;
+            color: white;
+        }
+
+        .hints {
+            position: absolute;
+            bottom: 0;
+            transform: translateY(100%);
+            box-sizing: border-box;
+            width: 100%;
+            left: 0;
+            background: whitesmoke;
+            .hint {
+                color: #424242;
+                font-size: 0.9em;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                padding: 0.25em 0.5em;
+                .score {
+                    color:#00c853;
+                }
+                &:hover {
+                    background: rgb(235, 235, 235);
+                    border: 1px solid lightgrey;
+                }
+            }
+        }
+    }
+    .answer {
+        margin-top: 5em;
+    }
+}
